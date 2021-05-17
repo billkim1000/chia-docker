@@ -19,11 +19,10 @@ RUN echo "cloning main"
 RUN git clone --branch main https://github.com/Chia-Network/chia-blockchain.git \
 && cd chia-blockchain \
 && git submodule update --init mozilla-ca \
-&& chmod +x install.sh \
 && /usr/bin/sh ./install.sh
 
 WORKDIR /chia-blockchain
 RUN mkdir /plots
-ADD ./entrypoint.sh entrypoint.sh
+ADD ./entrypoint.sh /root/entrypoint.sh
 
-ENTRYPOINT ["bash", "./entrypoint.sh"]
+ENTRYPOINT ["bash", "/root/entrypoint.sh"]

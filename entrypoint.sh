@@ -4,6 +4,10 @@ cd /chia-blockchain
 
 chia init
 
+if [ -d ${ca_dir} ]; then
+  chia init -c ${ca_dir}
+fi
+
 #if [[ ${keys} == "generate" ]]; then
 #  echo "to use your own keys pass them as a text file -v /path/to/keyfile:/path/in/container and -e keys=\"/path/in/container\""
 #  chia keys generate

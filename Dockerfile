@@ -17,11 +17,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y curl jq 
 
 ENV TZ=America/Los_Angeles
 RUN echo $TZ > /etc/timezone && \
-    apt-get update && apt-get install -y tzdata && \
+    apt-get -y update && apt-get -y install tzdata && \
     rm /etc/localtime && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
-    apt-get clean
+    apt-get -y clean
 
 RUN echo "cloning main"
 RUN git clone --branch main https://github.com/Chia-Network/chia-blockchain.git \
